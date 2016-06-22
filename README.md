@@ -1,4 +1,4 @@
 # MakeSchoolSummerAcademy16 
 
-### Swift Language Playground
-### Tip Calculator
+#### 1. Swift Language Playground
+#### 2. Tip Calculator
