@@ -1,1 +1,4 @@
-# MakeSchoolSummerAcademy16 Repositories
+# MakeSchoolSummerAcademy16 
+
+## Swift Language Playground
+## Tip Calculator
