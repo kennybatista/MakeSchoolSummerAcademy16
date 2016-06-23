@@ -93,7 +93,7 @@ let firstElement = optionalArray?[0]
 */
 let optionalString: String? = nil
 
-let petName = optionalString ?? "Fido" //If optionalString as a value, the value in that variable is the value of the expression. If the optionalString variable does not have a value, then the value to the right ( the Fido String) will become the value of the expression.
+let petName = optionalString ?? "Fido" //If optionalString has a value, the value in that variable is the value of the expression. If the optionalString variable does not have a value, then the value to the right ( the Fido String) will become the value of the expression.
 //: So if `optionalString` is not nil, we'll set `petName` to the value of `optionalString`. If it is nil, we'll set `petName` to "Fido".
 /*:
 ## Recap
