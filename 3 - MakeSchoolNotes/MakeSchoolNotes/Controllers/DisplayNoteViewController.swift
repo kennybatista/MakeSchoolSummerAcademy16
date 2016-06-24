@@ -11,46 +11,56 @@ import UIKit
 class DisplayNoteViewController: UIViewController {
     @IBOutlet weak var noteTitleTextField: UITextField!
     @IBOutlet weak var noteContentTextView: UITextView!
+    
+    var note: Note?
 
   override func viewDidLoad() {
     super.viewDidLoad()
   }
     
+    
+    
+    
+    
+    
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         //1
-        noteContentTextView.text = "l"
-        noteTitleTextField.text = "l"
+        //if let note = note ; this is optional binding
+        if let note = note {
+            noteContentTextView.text = note.title
+            noteTitleTextField.text = note.content
+        } else {
+            //3
+            noteTitleTextField.text = ""
+            noteContentTextView.text = ""
+        }
+       
     }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let identifier = segue.identifier {
-            //2
-            if identifier == "Cancel" {
-                print("Cancel button tapped")
-                
-            } else if identifier == "Save" {
-                print("Save button tapped")
+        let listNotesTableViewController = segue.destinationViewController as! ListNotesTableViewController
+        if segue.identifier == "Save" {
+            //in note, store the notes data if there it's available
+            if let note = note {
+                //1
+                note.title = noteTitleTextField.text ?? ""
+                note.content = noteContentTextView.text ?? ""
+                //2
+                listNotesTableViewController.tableView.reloadData()
+            } else {
+                //3
+                //an instance of the Note model
+                let newNote = Note()
+                newNote.title = noteTitleTextField.text ?? ""
+                newNote.content = noteContentTextView.text ?? ""
+                //we store the current date in the newNote model
+                newNote.modificationTime = NSDate()
+                //here we add all of the above modification(empty text field, title field, set nsdate) to the table view listing all notes
+                listNotesTableViewController.notes.append(newNote)
             }
         }
-        
-        
-        //1 - Instance of note : call the note model object, the one containing all of the notes
-        let note = Note()
-        
-        //2 - if the textfield has a value, the value of the expression will be that value. If the textfield is empty, then we give it the value after the ??, which is ??
-        note.title = noteTitleTextField.text ?? ""
-        note.content = noteContentTextView.text ?? ""
-        
-        //3
-        //we store the current date/time in the model
-        note.modificationTime = NSDate()
-        
-        
-        //**SAVING NOTE **
-        //1
-        let listNotesTableViewController = segue.destinationViewController as! ListNotesTableViewController
-        listNotesTableViewController.notes.append(note)
     }
     
     

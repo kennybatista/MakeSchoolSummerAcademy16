@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2505BC121D1CE90D0016E882 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2505BC111D1CE90D0016E882 /* RealmHelper.swift */; };
 		2544E3361D1C29A800979CA3 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2544E3351D1C29A800979CA3 /* Notes.swift */; };
 		2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4A07931C42F3B0007F415F /* AppDelegate.swift */; };
 		2E4A07991C42F3B0007F415F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E4A07971C42F3B0007F415F /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2505BC111D1CE90D0016E882 /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		2544E3351D1C29A800979CA3 /* Notes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		2E4A07901C42F3B0007F415F /* MakeSchoolNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakeSchoolNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E4A07931C42F3B0007F415F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		2E4A07AC1C42F4EB007F415F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2505BC111D1CE90D0016E882 /* RealmHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				2E4A07AF1C42F539007F415F /* NSDate+convertToString.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
+				2505BC121D1CE90D0016E882 /* RealmHelper.swift in Sources */,
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,
 				2544E3361D1C29A800979CA3 /* Notes.swift in Sources */,
 			);
