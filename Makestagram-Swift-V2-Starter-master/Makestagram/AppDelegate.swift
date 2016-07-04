@@ -20,13 +20,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Set up the Parse SDK:
         let configuration = ParseClientConfiguration {
-            $0.applicationID = "makestagram"
+            $0.applicationId = "makestagram"
             $0.server = "https://makestagram-kb.herokuapp.com/parse"
         }
         
         //calling the
         Parse.initializeWithConfiguration(configuration)
+        
+        //try to login, if an error is being returned, catch it, and do this: in our example, we print "unable to login"
+        do {
+            try PFUser.logInWithUsername("test", password: "test")
+        } catch {
+            print("Unable to log in")
+        }
+        
+        // optional binding, we store the current user in the "currentUser" variable, we get the current user from the PFUser.currentUser() , PFUser: Parse Framework user
+        if let currentUser = PFUser.currentUser() {
+            print("\(currentUser.username!) logged in successfuly")
+        } else {
+            print("No logged in user :(")
+        }
+        
+        
+        
+        
         return true
+        
+        
+        
     }
     
 
