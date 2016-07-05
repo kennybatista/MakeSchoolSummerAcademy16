@@ -1,10 +1,27 @@
 import UIKit
+import Parse
 
 
 
-class TimelineVC: UIViewController {
+
+class TimelineVC: UIViewController, UITableViewDataSource {
+    
+    @IBOutlet weak var timelineTableView: UITableView!
     
     var photoTakingHelper: PhotoTakingHelper?
+    
+    var posts : [Post] = []
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostTableViewCell
+        cell.gramImageView.image = posts[indexPath.row].image
+        
+        return cell
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,10 +35,66 @@ class TimelineVC: UIViewController {
     func takePhoto() {
         // instantiate photo taking class, provide callback for when photo is selected
         photoTakingHelper = PhotoTakingHelper(viewController: self.tabBarController!) { (image: UIImage?) in
-            print("received a callback")
+            let post = Post()
+            post.image = image
+            post.uploadPost()
+        }
+ 
+
+    }
+    
+    
+    
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // 1
+        let followingQuery = PFQuery(className: "Follow")
+        followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
+        
+        // 2
+        let postsFromFollowedUsers = Post.query()
+        postsFromFollowedUsers!.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
+        
+        // 3
+        let postsFromThisUser = Post.query()
+        postsFromThisUser!.whereKey("user", equalTo: PFUser.currentUser()!)
+        
+        // 4
+        let query = PFQuery.orQueryWithSubqueries([postsFromFollowedUsers!, postsFromThisUser!])
+        // 5
+        query.includeKey("user")
+        // 6
+        query.orderByDescending("createdAt")
+        
+        // 7
+        query.findObjectsInBackgroundWithBlock {(result: [PFObject]?, error: NSError?) -> Void in
+            // 8
+            self.posts = result as? [Post] ?? []
+            
+            // 1
+
+            for post in self.posts {
+                do {
+                    // 2
+                    let data = try post.imageFile?.getData()
+                    // 3
+                    post.image = UIImage(data: data!, scale:1.0)
+                } catch {
+                    print("could not get image")
+                }
+            }
+            
+            self.timelineTableView.reloadData()
         }
     }
+    
+    
+    
 }
+
 
 // MARK: Tab Bar Delegate
 
@@ -43,3 +116,16 @@ extension TimelineVC: UITabBarControllerDelegate {
         }
     }
 }
+
+
+/*
+
+ First create a PFFile with the image data, then a PFObject for the post. 
+ Remember that the post needs a reference to the uploaded image! 
+ Place your solution in the PhotoHelper callback within TimelineViewController. 
+ 
+ You will need to use a function called UIImageJPEGRepresentation to convert the UIImage into NSData to be passed to the PFFile.
+ */
+
+
+

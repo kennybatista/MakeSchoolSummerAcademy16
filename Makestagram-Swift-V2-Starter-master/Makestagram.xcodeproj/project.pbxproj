@@ -12,6 +12,8 @@
 		257E4BE81D29FEB3009414D6 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257E4BE71D29FEB3009414D6 /* PhotoVC.swift */; };
 		257E4BED1D2A09BF009414D6 /* PhotoTaking in Resources */ = {isa = PBXBuildFile; fileRef = 257E4BEC1D2A09BF009414D6 /* PhotoTaking */; };
 		257E4BF11D2A0F54009414D6 /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257E4BF01D2A0F54009414D6 /* PhotoTakingHelper.swift */; };
+		257E4BFA1D2AFCD0009414D6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257E4BF91D2AFCD0009414D6 /* Post.swift */; };
+		257E4C091D2B4A33009414D6 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257E4C081D2B4A33009414D6 /* PostTableViewCell.swift */; };
 		62551B961B06C2F5000913E4 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62551B951B06C2F5000913E4 /* Social.framework */; };
 		62551B981B06C2FD000913E4 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62551B971B06C2FD000913E4 /* Accounts.framework */; };
 		62551B9A1B06C31F000913E4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62551B991B06C31F000913E4 /* CoreLocation.framework */; };
@@ -69,6 +71,8 @@
 		257E4BE71D29FEB3009414D6 /* PhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		257E4BEC1D2A09BF009414D6 /* PhotoTaking */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PhotoTaking; sourceTree = "<group>"; };
 		257E4BF01D2A0F54009414D6 /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
+		257E4BF91D2AFCD0009414D6 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		257E4C081D2B4A33009414D6 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostTableViewCell.swift; path = ViewControllers/Timeline/PostTableViewCell.swift; sourceTree = "<group>"; };
 		37FC404C3E4D3F8CA5F05937 /* Pods_Makestagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Makestagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CC9E759095D1D7E3CF2BB11 /* Pods-Makestagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Makestagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Makestagram/Pods-Makestagram.debug.xcconfig"; sourceTree = "<group>"; };
 		62551B951B06C2F5000913E4 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -134,6 +138,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		257E4C071D2B4A25009414D6 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				257E4C081D2B4A33009414D6 /* PostTableViewCell.swift */,
+			);
+			name = Timeline;
+			sourceTree = "<group>";
+		};
 		28452843D0630359BE2F4B87 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +182,7 @@
 				257E4BF01D2A0F54009414D6 /* PhotoTakingHelper.swift */,
 				257E4BE31D29FE8D009414D6 /* FriendSearchVC.swift */,
 				257E4BE71D29FEB3009414D6 /* PhotoVC.swift */,
+				257E4BF91D2AFCD0009414D6 /* Post.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -230,10 +243,11 @@
 		62C8C1E21B06BD6500DC3EA7 /* Makestagram */ = {
 			isa = PBXGroup;
 			children = (
+				257E4C071D2B4A25009414D6 /* Timeline */,
 				257E4BEC1D2A09BF009414D6 /* PhotoTaking */,
 				6277189C1B0A58E800AF5C6E /* Helpers */,
-				627718811B0A581600AF5C6E /* ViewControllers */,
 				62C8C1E51B06BD6500DC3EA7 /* AppDelegate.swift */,
+				627718811B0A581600AF5C6E /* ViewControllers */,
 				62C8C1E91B06BD6500DC3EA7 /* Main.storyboard */,
 				62C8C1EC1B06BD6500DC3EA7 /* Images.xcassets */,
 				62C8C1EE1B06BD6500DC3EA7 /* LaunchScreen.xib */,
@@ -478,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				627718901B0A581600AF5C6E /* Filter.swift in Sources */,
+				257E4BFA1D2AFCD0009414D6 /* Post.swift in Sources */,
 				627718A01B0A58E800AF5C6E /* ParseLoginHelper.swift in Sources */,
 				627718911B0A581700AF5C6E /* FilterCollectionViewCell.swift in Sources */,
 				257E4BE61D29FEA2009414D6 /* TimelineVC.swift in Sources */,
@@ -487,6 +502,7 @@
 				257E4BE41D29FE8D009414D6 /* FriendSearchVC.swift in Sources */,
 				627718971B0A581700AF5C6E /* FilterViewController.swift in Sources */,
 				257E4BE81D29FEB3009414D6 /* PhotoVC.swift in Sources */,
+				257E4C091D2B4A33009414D6 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
